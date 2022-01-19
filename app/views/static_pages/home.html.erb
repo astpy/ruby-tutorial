@@ -11,6 +11,11 @@
   </ul>
 </header>
 
+<!--
+<script src="home.js"></script>
+-->
+
+<%= javascript_include_tag('home.js') %>
 
 <div class="main top-main">
   <div class="top-message">
@@ -22,8 +27,8 @@
     <% end %>
     -->
     <input type="number" id="msg" size="20">
-    <input class="button" type="button" value="生成" onclick="alert_msg()">
-    <!-->
+    <input class="button" type="button" value="生成" onclick="alert_msg();">
+    <!--
     <script>
       function alert_msg() {
         var message = document.getElementById('msg').value;
@@ -35,5 +40,3 @@
     <a href="/help">help</a>
   </div>
 </div>
-
-<script src="home.js">
