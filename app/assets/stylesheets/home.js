@@ -7,7 +7,7 @@ function search_song_array(){
         url = "/json/" + i + ".json";
         console.log(url);
         $.getJSON(url, function(data){
-            var tmp_array = [Array(data.length).keys()];
+            var tmp_array = [...Array(data.length)].map((v, i)=> i);
             console.log(tmp_array);
             diff_arrays.push(tmp_array);
         });
