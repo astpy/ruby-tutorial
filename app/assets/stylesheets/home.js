@@ -48,6 +48,7 @@ function search_song(){
                     }
                 }
             }
+            already.push([diff, song_index]);
             document.getElementById("pic2").innerText = data[song_index]["曲名"];
         });
     }
@@ -69,6 +70,7 @@ function search_song(){
                     }
                 }
             }
+            already.push([diff, song_index]);
             document.getElementById("pic3").innerText = data[song_index]["曲名"];
         });
     }
