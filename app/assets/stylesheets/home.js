@@ -1,40 +1,32 @@
-function diff_array(i){
+function get_diff_arrays(){
 
-    var url = "/json/" + i + ".json";
-    var tmp_array = null;
-    var diff_index = [];
+    var diff_arrays = [];
+    var index_array = [];
 
-    $.getJSON(url, function(data){
-        diff_index.push(i);
-        tmp_array = [...Array(data.length)].map((v, i)=> i);
-        console.log(url);
-        console.log(i);
-        console.log(tmp_array);
-    });
+    for(var i = 9; i <= 19; i++){
 
-    return [i, tmp_array];
+        var tmp_array = null;
+        var url = "/json/" + i + ".json";
+
+        $.getJSON(url, function(data){
+            index_array.push(i);
+            tmp_array = [...Array(data.length)].map((v, i)=> i);
+            // console.log(url);
+            // console.log(i);
+            // console.log(tmp_array);
+        });
+
+        diff_arrays.push(tmp_array);
+
+    }
+
+    return [index_array, diff_arrays];
 
 }
 
 function search_song_array(){
 
-    var url = "";
-    var diff_arrays = [];
-    var index_array = [];
-    // var tmp_array = null;
-
-    for(var i = 9; i <= 19; i++){
-        /*
-        $.getJSON(url, function(data){
-            tmp_array = [...Array(data.length)].map((v, i)=> i);
-            console.log(url);
-            console.log(tmp_array);
-        });
-        */
-        const [index, tmp_array] = diff_array(i);
-        diff_arrays.push(tmp_array);
-        index_array.push(index);
-    }
+    const [index_array, diff_arrays] = get_diff_arrays();
 
     console.log(index_array);
     console.log(diff_arrays);
