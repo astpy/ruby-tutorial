@@ -1,7 +1,9 @@
 function diff_array(url){
 
+    var tmp_array;
+
     $.getJSON(url, function(data){
-        var tmp_array = [...Array(data.length)].map((v, i)=> i);
+        tmp_array = [...Array(data.length)].map((v, i)=> i);
         console.log(url);
         console.log(tmp_array);
     });
