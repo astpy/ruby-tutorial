@@ -1,10 +1,14 @@
-function diff_array(url){
+function diff_array(i){
 
+    var url = "/json/" + i + ".json";
     var tmp_array = null;
+    var diff_index = [];
 
     $.getJSON(url, function(data){
+        diff_index.push(i);
         tmp_array = [...Array(data.length)].map((v, i)=> i);
         console.log(url);
+        console.log(i);
         console.log(tmp_array);
     });
 
@@ -19,7 +23,6 @@ function search_song_array(){
     // var tmp_array = null;
 
     for(var i = 9; i <= 19; i++){
-        url = "/json/" + i + ".json";
         /*
         $.getJSON(url, function(data){
             tmp_array = [...Array(data.length)].map((v, i)=> i);
@@ -27,7 +30,7 @@ function search_song_array(){
             console.log(tmp_array);
         });
         */
-        var tmp_array = diff_array(url);
+        var tmp_array = diff_array(i);
         diff_arrays.push(tmp_array);
     }
 
