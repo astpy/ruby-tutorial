@@ -1,3 +1,15 @@
+function diff_array(url){
+
+    $.getJSON(url, function(data){
+        var tmp_array = [...Array(data.length)].map((v, i)=> i);
+        console.log(url);
+        console.log(tmp_array);
+    });
+
+    return tmp_array;
+
+}
+
 function search_song_array(){
 
     var url = "";
@@ -9,8 +21,8 @@ function search_song_array(){
             var tmp_array = [...Array(data.length)].map((v, i)=> i);
             console.log(url);
             console.log(tmp_array);
-            diff_arrays.push(tmp_array);
         });
+        diff_arrays.push(tmp_array);
     }
 
     console.log(diff_arrays);
