@@ -1,9 +1,9 @@
 function overlap_check(diff, index, already){
 
-    alert(`${diff} ${index} ${already[0]} ${already[1]}`);
+    alert(`${diff} ${index} ${already[0][0]} ${already[0][1]}`);
 
     for(var i = 0; i < already.length; i++){
-        if(diff == already[0] && index == already[1]){
+        if(diff == already[i][0] && index == already[i][1]){
             return false;
         }else{
             return true;
