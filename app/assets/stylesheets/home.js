@@ -33,7 +33,7 @@ function search_song_array(){
     console.log(diff_arrays);
     */
 
-    // var already = [];
+    var already = [];
 
     var index_array = [];
     var diff_arrays = [];
