@@ -1,11 +1,12 @@
 function search_song_array(){
 
     var url = "";
+    var diff_arrays = [];
 
     for(var i = 9; i <= 19; i++){
         url = "/json/" + i + ".json";
         $.getJSON(url, function(data){
-            diff_arrays = [...Array(data.length).keys()].map((d) => {return d});
+            diff_arrays.push([...Array(data.length).keys()].map((d) => {return d}));
         });
     }
 
