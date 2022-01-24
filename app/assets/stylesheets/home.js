@@ -1,7 +1,8 @@
+var diff_arrays = [];
+var index_array = [];
+
 function get_diff_arrays(){
 
-    var diff_arrays = [];
-    var index_array = [];
 
     for(var i = 9; i <= 19; i++){
 
@@ -19,8 +20,6 @@ function get_diff_arrays(){
         diff_arrays.push(tmp_array);
 
     }
-
-    return [index_array, diff_arrays];
 
 }
 
@@ -49,7 +48,7 @@ function search_song_array(){
         $.getJSON(url, function(data){
             index_array.push(diff);
             var tmp_array = [...Array(data.length)].map((v, i)=> i);
-            console.log(`tmp_array ${tmp_array}`);
+            console.log(`tmp_array #tmp_array);
             var song_index = Math.floor(Math.random() * data.length);
             document.getElementById("pic1").innerText = data[song_index]["曲名"];
             tmp_array.splice(song_index, 1);
@@ -57,8 +56,8 @@ function search_song_array(){
         });
     }
 
-    console.log(`index_array ${index_array}`);
-    console.log(`diff_array ${diff_arrays}`);
+    console.log(index_array);
+    console.log(diff_arrays);
 
     // 2曲目
     var diff = document.getElementById('2nd').value;
