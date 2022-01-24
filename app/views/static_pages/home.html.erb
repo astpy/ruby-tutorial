@@ -25,26 +25,34 @@
 
 <div class="main top-main">
   <div class="top-message">
+
     <h2>説明</h2>
-    <p>
-      1曲目
-      <input type="number" id="1st" size="20">
-    </p>
-    <p>
-      2曲目
-      <input type="number" id="2nd" size="20">
-    </p>
-    <p>
-      3曲目
-      <input type="number" id="3rd" size="20">
-    </p>
+
+    <div>
       <p>
-      EXTRA
-      <input type="number" id="ex" size="20">
-    </p>
-    <p>
-      <input class="button" type="button" value="生成" onclick="search_song();">
-    </p>
+        1曲目
+        <input type="number" id="1st" size="20">
+      </p>
+      <p>
+        2曲目
+        <input type="number" id="2nd" size="20">
+      </p>
+      <p>
+        3曲目
+        <input type="number" id="3rd" size="20">
+      </p>
+        <p>
+        EXTRA
+        <input type="number" id="ex" size="20">
+      </p>
+      <p>
+      重複あり
+        <input type="checkbox" value="重複あり">
+      </p>
+      <p>
+        <input class="button" type="button" value="生成" id="overlap" onclick="search_song();">
+      </p>
+    </div>
 
     <div>
       <p id="pic1"> 1曲目 </p>
