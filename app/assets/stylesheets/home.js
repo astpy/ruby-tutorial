@@ -5,6 +5,7 @@ function search_song_array(){
 
     for(var i = 9; i <= 19; i++){
         url = "/json/" + i + ".json";
+        console.log(url);
         $.getJSON(url, function(data){
             diff_arrays.push([...Array(data.length).keys()].map((d) => {return d}));
         });
