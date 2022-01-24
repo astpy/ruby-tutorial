@@ -12,7 +12,7 @@ function diff_array(i){
         console.log(tmp_array);
     });
 
-    return tmp_array;
+    return [i, tmp_array];
 
 }
 
@@ -20,6 +20,7 @@ function search_song_array(){
 
     var url = "";
     var diff_arrays = [];
+    var index_array = [];
     // var tmp_array = null;
 
     for(var i = 9; i <= 19; i++){
@@ -30,10 +31,12 @@ function search_song_array(){
             console.log(tmp_array);
         });
         */
-        var tmp_array = diff_array(i);
+        const [index, tmp_array] = diff_array(i);
         diff_arrays.push(tmp_array);
+        index_array.push(index);
     }
 
+    console.log(index_array);
     console.log(diff_arrays);
 
     var already = [];
