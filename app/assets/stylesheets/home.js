@@ -1,5 +1,7 @@
 function overlap_check(diff, index, already){
 
+    alert(diff, index, already);
+
     for(var i = 0; i < already.length; i++){
         if(diff == already[0] && index == already[1]){
             return false;
@@ -96,6 +98,8 @@ function search_song(){
     if(alert_text != ""){
         alert(alert_text);
     }
+
+
 
 }
 
