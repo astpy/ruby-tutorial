@@ -48,8 +48,8 @@ function search_song_array(){
         var url = "/json/" + diff + ".json";
         $.getJSON(url, function(data){
             index_array.push(diff);
-            tmp_array = [...Array(data.length)].map((v, i)=> i);
-            console.log(tmp_array);
+            var tmp_array = [...Array(data.length)].map((v, i)=> i);
+            console.log(`tmp_array ${tmp_array}`);
             var song_index = Math.floor(Math.random() * data.length);
             document.getElementById("pic1").innerText = data[song_index]["曲名"];
             tmp_array.splice(song_index, 1);
@@ -57,8 +57,8 @@ function search_song_array(){
         });
     }
 
-    console.log(index_array);
-    console.log(diff_arrays);
+    console.log(`index_array ${index_array}`);
+    console.log(`diff_array ${diff_arrays}`);
 
     // 2曲目
     var diff = document.getElementById('2nd').value;
