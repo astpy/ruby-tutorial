@@ -1,6 +1,6 @@
 function overlap_check(diff, index, already){
 
-    alert(diff, index, already);
+    alert(`${diff} ${index} ${already[0]} ${already[1]}`);
 
     for(var i = 0; i < already.length; i++){
         if(diff == already[0] && index == already[1]){
