@@ -1,4 +1,4 @@
-function test(){
+function search_song(){
 
     var difficulties = [];
     var alert_text = "";
