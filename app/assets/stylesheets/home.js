@@ -26,12 +26,18 @@ function get_diff_arrays(){
 
 function search_song_array(){
 
+    /*
     const [index_array, diff_arrays] = get_diff_arrays();
 
     console.log(index_array);
     console.log(diff_arrays);
+    */
 
-    var already = [];
+    // var already = [];
+
+    var index_array = [];
+    var diff_arrays = [];
+
     var alert_text = "";
 
     // 1曲目
@@ -41,11 +47,18 @@ function search_song_array(){
     }else{
         var url = "/json/" + diff + ".json";
         $.getJSON(url, function(data){
+            index_array.push(diff);
+            tmp_array = [...Array(data.length)].map((v, i)=> i);
+            console.log(tmp_array);
             var song_index = Math.floor(Math.random() * data.length);
-            already.push([diff, song_index]);
             document.getElementById("pic1").innerText = data[song_index]["曲名"];
+            tmp_array.splice(song_index, 1);
+            diff_arrays.push(tmp_array);
         });
     }
+
+    console.log(index_array);
+    console.log(diff_arrays);
 
     // 2曲目
     var diff = document.getElementById('2nd').value;
