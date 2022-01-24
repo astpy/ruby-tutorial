@@ -1,11 +1,10 @@
 function overlap_check(diff, index, already){
 
-    alert(`${diff} ${index} ${already[0][0]} ${already[0][1]}`);
-
     for(var i = 0; i < already.length; i++){
         if(diff == already[i][0] && index == already[i][1]){
             return false;
         }else{
+            console.log(already);
             return true;
         }
     }
