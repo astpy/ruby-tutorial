@@ -9,10 +9,11 @@ default: &default
   adapter: postgresql
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
-# host: localhost
-# port: 5432
-# user: postgres
-# password: postgres
+  # Remove # to build in local.
+  # host: localhost
+  # port: 5432
+  # user: postgres
+  # password: postgres
 
 development:
   <<: *default
@@ -25,10 +26,12 @@ test:
   <<: *default
   database: test_sql
 
+# In order to build in local.
 # production:
 #   <<: *default
 #   database: production_sql
 
+# In order to build in heroku server 
 production:
- <<: *default
- url: <%= ENV['DATABASE_URL'] %>
+  <<: *default
+  url: <%= ENV['DATABASE_URL'] %>

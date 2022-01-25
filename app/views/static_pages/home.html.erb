@@ -14,9 +14,6 @@
     </li>
   </ul>
   -->
-  <!--
-  <script src="home.js"></script>
-  -->
   <%= javascript_include_tag('home.js') %>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 </header>
@@ -25,27 +22,40 @@
 <div class="main top-main">
   <div class="top-message">
 
-    <h2>説明</h2>
+    <div>
+      DDR の課題曲をランダムに出力します。 <br>
+      難易度は 9~19 に対応しています。現在はSPのみの対応です。 <br>
+      下のテキストボックスに難易度を入力して生成ボタンを押してください。
+    </div>
 
     <div>
       <p>
         1曲目
         <input type="number" id="1st" size="20">
+        <div id="1stError" style="color:red">
+        </div>
       </p>
       <p>
         2曲目
         <input type="number" id="2nd" size="20">
+        <div id="2ndError" style="color:red">
+        </div>
       </p>
       <p>
         3曲目
         <input type="number" id="3rd" size="20">
+        <div id="3rdError" style="color:red">
+        </div>
+        
       </p>
         <p>
         EXTRA
         <input type="number" id="ex" size="20">
+        <div id="exError" style="color:red">
+        </div>
       </p>
       <p>
-      重複あり
+        重複あり
         <input type="checkbox" value="重複あり" id="overlap">
       </p>
       <p>
@@ -54,10 +64,10 @@
     </div>
 
     <div>
-      <p id="pic1"> 1曲目 </p>
-      <p id="pic2"> 2曲目 </p>
-      <p id="pic3"> 3曲目 </p>
-      <p id="pic4"> EXTRA STAGE </p>
+      <p id="pic1"> [1曲目] </p>
+      <p id="pic2"> [2曲目] </p>
+      <p id="pic3"> [3曲目] </p>
+      <p id="pic4"> [EXTRA] </p>
     </div>
 
     <!--

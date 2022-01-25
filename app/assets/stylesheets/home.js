@@ -53,9 +53,14 @@ const _1st = function(diff_arrays){
         // 1曲目
         var song_index;
         var diff = document.getElementById('1st').value;
-        if(diff < 9 || diff > 19){
-            alert_text += "1曲目 : 9以上19以内で入力してください。\n";
+        if(diff == false){
+            document.getElementById("1stError").innerText = "";
+            document.getElementById("pic1").innerText = "[1曲目]";
+        }else if(diff < 9 || diff > 19){
+            // alert_text += "1曲目 : 9以上19以内で入力してください。\n";
+            document.getElementById("1stError").innerText = "9~19の範囲で入力してください。";
         }else{
+            document.getElementById("1stError").innerText = "";
             if(document.getElementById("overlap").checked == true){
                 song_index = Math.floor(Math.random() * diff_arrays[diff - 9].length);
             }else{
@@ -83,9 +88,14 @@ const _2nd = function(diff_arrays){
 
         // 2曲目
         var diff = document.getElementById('2nd').value;
-        if(diff < 9 || diff > 19){
-            alert_text += "2曲目 : 9以上19以内で入力してください。\n";
+        if(diff == false){
+            document.getElementById("2ndError").innerText = "";
+            document.getElementById("pic2").innerText = "[2曲目]";
+        }else if(diff < 9 || diff > 19){
+            // alert_text += "2曲目 : 9以上19以内で入力してください。\n";
+            document.getElementById("2ndError").innerText = "9~19の範囲で入力してください。";
         }else{
+            document.getElementById("2ndError").innerText = "";
             if(document.getElementById("overlap").checked == true){
                 song_index = Math.floor(Math.random() * diff_arrays[diff - 9].length);
             }else{
@@ -113,9 +123,14 @@ const _3rd = function(diff_arrays){
     // 3曲目
     var song_index;
         var diff = document.getElementById('3rd').value;
-        if(diff < 9 || diff > 19){
-            alert_text += "3曲目 : 9以上19以内で入力してください。\n";
+        if(diff == false){
+            document.getElementById("3rdError").innerText = "";
+            document.getElementById("pic3").innerText = "[3曲目]";
+        }else if(diff < 9 || diff > 19){
+            // alert_text += "3曲目 : 9以上19以内で入力してください。\n";
+            document.getElementById("3rdError").innerText = "9~19の範囲で入力してください。";
         }else{
+            document.getElementById("3rdError").innerText = "";
             if(document.getElementById("overlap").checked == true){
                 song_index = Math.floor(Math.random() * diff_arrays[diff - 9].length);
             }else{
@@ -144,9 +159,14 @@ const _ex = function(diff_arrays){
         // EXTRA
         var song_index;
         var diff = document.getElementById('ex').value;
-        if(diff < 9 || diff > 19){
-            alert_text += "EXTRA : 9以上19以内で入力してください。";
+        if(diff == false){
+            document.getElementById("exError").innerText = "";
+            document.getElementById("pic4").innerText = "[EXTRA]";
+        }else if(diff < 9 || diff > 19){
+            // alert_text += "EXTRA : 9以上19以内で入力してください。";
+            document.getElementById("exError").innerText = "9~19の範囲で入力してください。";
         }else{
+            document.getElementById("exError").innerText = "";
             if(document.getElementById("overlap").checked == true){
                 song_index = Math.floor(Math.random() * diff_arrays[diff - 9].length);
             }else{
