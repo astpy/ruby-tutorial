@@ -38,7 +38,7 @@ function search_song_array(){
     get_diff_arrays().then(_1st).then(_2nd).then(_3rd).then(_ex);
 
     if(alert_text != ""){
-        alert(alert_text);
+        // alert(alert_text);
     }
 
 }
@@ -46,29 +46,31 @@ function search_song_array(){
 
 const _1st = function(diff_arrays){
 
-    alert(diff_arrays);
+    // alert(diff_arrays);
 
     return new Promise(function(resolve, reject){
 
         // 1曲目
+        var song_index;
         var diff = document.getElementById('1st').value;
         if(diff < 9 || diff > 19){
             alert_text += "1曲目 : 9以上19以内で入力してください。\n";
         }else{
             if(document.getElementById("overlap").checked == true){
-                var song_index = Math.floor(Math.random() * diff_arrays[diff - 9].length);
+                song_index = Math.floor(Math.random() * diff_arrays[diff - 9].length);
             }else{
-                var song_index = Math.floor(Math.random() * diff_arrays[diff - 9].length);
-                diff_arrays[diff - 9].splice(song_index, 1);
+                var rand_num = Math.floor(Math.random() * diff_arrays[diff - 9].length);
+                song_index = diff_arrays[diff - 9].splice(rand_num, 1);
+                // alert(song_index);
             }
             var url = "/json/" + diff + ".json";
             $.ajaxSetup({ async: false });
             $.getJSON(url, function(data){
-                document.getElementById("pic1").innerText = data[song_index]["曲名"];
+                document.getElementById("pic1").innerText = data[song_index - 1]["曲名"];
             });
         }
-        console.log("1st");
-        console.log(diff_arrays);
+        // console.log("1st");
+        // alert(diff_arrays[diff - 9]);
         resolve(diff_arrays);
         
     });
@@ -85,19 +87,20 @@ const _2nd = function(diff_arrays){
             alert_text += "2曲目 : 9以上19以内で入力してください。\n";
         }else{
             if(document.getElementById("overlap").checked == true){
-                var song_index = Math.floor(Math.random() * diff_arrays[diff - 9].length);
+                song_index = Math.floor(Math.random() * diff_arrays[diff - 9].length);
             }else{
-                var song_index = Math.floor(Math.random() * diff_arrays[diff - 9].length);
-                diff_arrays[diff - 9].splice(song_index, 1);
+                rand_num = Math.floor(Math.random() * diff_arrays[diff - 9].length);
+                song_index = diff_arrays[diff - 9].splice(rand_num, 1);
+                // alert(song_index);
             }
             var url = "/json/" + diff + ".json";
             $.ajaxSetup({ async: false });
             $.getJSON(url, function(data){
-                document.getElementById("pic2").innerText = data[song_index]["曲名"];
+                document.getElementById("pic2").innerText = data[song_index - 1]["曲名"];
             });
         }
-        console.log("2nd");
-        console.log(diff_arrays);
+        // console.log("2nd");
+        // alert(diff_arrays[diff - 9]);
         resolve(diff_arrays);
     });
 }
@@ -108,24 +111,26 @@ const _3rd = function(diff_arrays){
     return new Promise(function(resolve, reject){
 
     // 3曲目
+    var song_index;
         var diff = document.getElementById('3rd').value;
         if(diff < 9 || diff > 19){
             alert_text += "3曲目 : 9以上19以内で入力してください。\n";
         }else{
             if(document.getElementById("overlap").checked == true){
-                var song_index = Math.floor(Math.random() * diff_arrays[diff - 9].length);
+                song_index = Math.floor(Math.random() * diff_arrays[diff - 9].length);
             }else{
-                var song_index = Math.floor(Math.random() * diff_arrays[diff - 9].length);
-                diff_arrays[diff - 9].splice(song_index, 1);
+                var rand_num = Math.floor(Math.random() * diff_arrays[diff - 9].length);
+                song_index = diff_arrays[diff - 9].splice(rand_num, 1);
+                // alert(song_index);
             }
             var url = "/json/" + diff + ".json";
             $.ajaxSetup({ async: false });
             $.getJSON(url, function(data){
-                document.getElementById("pic3").innerText = data[song_index]["曲名"];
+                document.getElementById("pic3").innerText = data[song_index - 1]["曲名"];
             });
         }
-        console.log("3rd");
-        console.log(diff_arrays);
+        // console.log("3rd");
+        // alert(diff_arrays[diff - 9]);
         resolve(diff_arrays);
     });
 
@@ -134,31 +139,29 @@ const _3rd = function(diff_arrays){
 
 const _ex = function(diff_arrays){
 
-    alert(diff_arrays);
-
     return new Promise(function(resolve, reject){
 
         // EXTRA
+        var song_index;
         var diff = document.getElementById('ex').value;
         if(diff < 9 || diff > 19){
             alert_text += "EXTRA : 9以上19以内で入力してください。";
         }else{
             if(document.getElementById("overlap").checked == true){
-                var song_index = Math.floor(Math.random() * diff_arrays[diff - 9].length);
+                song_index = Math.floor(Math.random() * diff_arrays[diff - 9].length);
             }else{
-                var song_index = Math.floor(Math.random() * diff_arrays[diff - 9].length);
-                diff_arrays[diff - 9].splice(song_index, 1);
-                alert(song_index);
+                var rand_num = Math.floor(Math.random() * diff_arrays[diff - 9].length);
+                song_index = diff_arrays[diff - 9].splice(rand_num, 1);
+                // alert(song_index);
             }
             var url = "/json/" + diff + ".json";
             $.ajaxSetup({ async: false });
             $.getJSON(url, function(data){
-                document.getElementById("pic4").innerText = data[song_index]["曲名"];
+                document.getElementById("pic4").innerText = data[song_index - 1]["曲名"];
             });
         }
-        console.log("ex");
-        alert(diff_arrays);
-        console.log(diff_arrays);
+        // console.log("ex");
+        // alert(diff_arrays[diff - 9]);
         resolve();
     });
 }
