@@ -1,18 +1,24 @@
 // HTML読み込み直後に実行される
 // document.addEventListener("DOMContentLoaded", get_diff_arrays );
 
+// 足9~足19までのidを格納した2次元配列を生成する。
+// 重複なしのときに使う用
 const get_diff_arrays = function(){
 
     return new Promise(function(resolve, reject){
 
         var diff_arrays = [];
 
+        // 足9~足19まで
         for(var i = 9; i <= 19; i++){
 
             var tmp_array = null;
+            // 足${i}のデータが入ったJSONファイルのURL
+            // public フォルダ内なので / から
             var url = "/json/" + i + ".json";
             $.ajaxSetup({ async: false });
             $.getJSON(url, function(data){
+                // [1, 2, 3, ... , data/length]
                 tmp_array = [...Array(data.length)].map((v, i)=> i + 1);
                 // console.log(url);
                 // console.log(tmp_array);
@@ -35,6 +41,7 @@ function search_song_array(){
     // global
     alert_text = "";
 
+    // 前処理 => 1曲目 => 2曲目 => 3曲目 => EXTRA
     get_diff_arrays().then(_1st).then(_2nd).then(_3rd).then(_ex);
 
     if(alert_text != ""){
@@ -43,33 +50,42 @@ function search_song_array(){
 
 }
 
-
+// 1曲目
 const _1st = function(diff_arrays){
 
     // alert(diff_arrays);
 
     return new Promise(function(resolve, reject){
 
-        // 1曲目
         var song_index;
+        // 1曲目のテキストボックスの数値を取得
         var diff = document.getElementById('1st').value;
+        // 空なら
         if(diff == false){
             document.getElementById("1stError").innerText = "";
             document.getElementById("pic1").innerText = "[1曲目]";
+        // 9~19 の範囲外なら
         }else if(diff < 9 || diff > 19){
             // alert_text += "1曲目 : 9以上19以内で入力してください。\n";
             document.getElementById("1stError").innerText = "9~19の範囲で入力してください。";
+        // 正常処理
         }else{
             document.getElementById("1stError").innerText = "";
+            // 重複ありの場合
             if(document.getElementById("overlap").checked == true){
+                // 0~diff_arrays[難易度].length の範囲でランダムで index を生成
                 song_index = Math.floor(Math.random() * diff_arrays[diff - 9].length);
             }else{
+                // 0~diff_arrays[難易度].length の中からランダムで index を生成し
                 var rand_num = Math.floor(Math.random() * diff_arrays[diff - 9].length);
+                // 一度取り出した要素は削除したあとに代入する。
                 song_index = diff_arrays[diff - 9].splice(rand_num, 1) - 1; 
                 // alert(song_index);
             }
+            // 該当するJSONファイルを開いて
             var url = "/json/" + diff + ".json";
             $.ajaxSetup({ async: false });
+            // 生成した index 番目の曲名を HTML ファイルに代入
             $.getJSON(url, function(data){
                 document.getElementById("pic1").innerText = data[song_index]["曲名"];
             });
