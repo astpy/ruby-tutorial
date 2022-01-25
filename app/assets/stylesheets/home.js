@@ -68,6 +68,7 @@ const _1st = function(diff_arrays){
         }else if(diff < 9 || diff > 19){
             // alert_text += "1曲目 : 9以上19以内で入力してください。\n";
             document.getElementById("1stError").innerText = "9~19の範囲で入力してください。";
+            document.getElementById("pic1").innerText = "[1曲目]";
         // 正常処理
         }else{
             document.getElementById("1stError").innerText = "";
@@ -110,6 +111,7 @@ const _2nd = function(diff_arrays){
         }else if(diff < 9 || diff > 19){
             // alert_text += "2曲目 : 9以上19以内で入力してください。\n";
             document.getElementById("2ndError").innerText = "9~19の範囲で入力してください。";
+            document.getElementById("pic2").innerText = "[2曲目]";
         }else{
             document.getElementById("2ndError").innerText = "";
             if(document.getElementById("overlap").checked == true){
@@ -145,6 +147,7 @@ const _3rd = function(diff_arrays){
         }else if(diff < 9 || diff > 19){
             // alert_text += "3曲目 : 9以上19以内で入力してください。\n";
             document.getElementById("3rdError").innerText = "9~19の範囲で入力してください。";
+            document.getElementById("pic3").innerText = "[3曲目]";
         }else{
             document.getElementById("3rdError").innerText = "";
             if(document.getElementById("overlap").checked == true){
@@ -181,6 +184,7 @@ const _ex = function(diff_arrays){
         }else if(diff < 9 || diff > 19){
             // alert_text += "EXTRA : 9以上19以内で入力してください。";
             document.getElementById("exError").innerText = "9~19の範囲で入力してください。";
+            document.getElementById("pic4").innerText = "[EXTRA]";
         }else{
             document.getElementById("exError").innerText = "";
             if(document.getElementById("overlap").checked == true){
