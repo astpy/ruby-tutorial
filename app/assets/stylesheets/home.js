@@ -60,13 +60,13 @@ const _1st = function(diff_arrays){
                 song_index = Math.floor(Math.random() * diff_arrays[diff - 9].length);
             }else{
                 var rand_num = Math.floor(Math.random() * diff_arrays[diff - 9].length);
-                song_index = diff_arrays[diff - 9].splice(rand_num, 1);
+                song_index = diff_arrays[diff - 9].splice(rand_num, 1) - 1; 
                 // alert(song_index);
             }
             var url = "/json/" + diff + ".json";
             $.ajaxSetup({ async: false });
             $.getJSON(url, function(data){
-                document.getElementById("pic1").innerText = data[song_index - 1]["曲名"];
+                document.getElementById("pic1").innerText = data[song_index]["曲名"];
             });
         }
         // console.log("1st");
@@ -90,13 +90,13 @@ const _2nd = function(diff_arrays){
                 song_index = Math.floor(Math.random() * diff_arrays[diff - 9].length);
             }else{
                 rand_num = Math.floor(Math.random() * diff_arrays[diff - 9].length);
-                song_index = diff_arrays[diff - 9].splice(rand_num, 1);
+                song_index = diff_arrays[diff - 9].splice(rand_num, 1) - 1;
                 // alert(song_index);
             }
             var url = "/json/" + diff + ".json";
             $.ajaxSetup({ async: false });
             $.getJSON(url, function(data){
-                document.getElementById("pic2").innerText = data[song_index - 1]["曲名"];
+                document.getElementById("pic2").innerText = data[song_index]["曲名"];
             });
         }
         // console.log("2nd");
@@ -120,13 +120,13 @@ const _3rd = function(diff_arrays){
                 song_index = Math.floor(Math.random() * diff_arrays[diff - 9].length);
             }else{
                 var rand_num = Math.floor(Math.random() * diff_arrays[diff - 9].length);
-                song_index = diff_arrays[diff - 9].splice(rand_num, 1);
+                song_index = diff_arrays[diff - 9].splice(rand_num, 1) - 1;
                 // alert(song_index);
             }
             var url = "/json/" + diff + ".json";
             $.ajaxSetup({ async: false });
             $.getJSON(url, function(data){
-                document.getElementById("pic3").innerText = data[song_index - 1]["曲名"];
+                document.getElementById("pic3").innerText = data[song_index]["曲名"];
             });
         }
         // console.log("3rd");
@@ -151,13 +151,13 @@ const _ex = function(diff_arrays){
                 song_index = Math.floor(Math.random() * diff_arrays[diff - 9].length);
             }else{
                 var rand_num = Math.floor(Math.random() * diff_arrays[diff - 9].length);
-                song_index = diff_arrays[diff - 9].splice(rand_num, 1);
+                song_index = diff_arrays[diff - 9].splice(rand_num, 1) - 1;
                 // alert(song_index);
             }
             var url = "/json/" + diff + ".json";
             $.ajaxSetup({ async: false });
             $.getJSON(url, function(data){
-                document.getElementById("pic4").innerText = data[song_index - 1]["曲名"];
+                document.getElementById("pic4").innerText = data[song_index]["曲名"];
             });
         }
         // console.log("ex");
