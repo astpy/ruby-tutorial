@@ -2,25 +2,13 @@
 
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## require
 
-Things you may want to cover:
+- <= Ruby 3.0
+- Rails enviroment
+    - This app is developed with Rby 3.1.0 and Rails 7.0.1.
 
-* Ruby version
+## build
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+1. `bundle install`
+2. Edit `config/database.yml`(to build in local)
