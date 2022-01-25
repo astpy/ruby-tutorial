@@ -1,52 +1,52 @@
-var index_array = [];
-var diff_arrays = [];
+// HTML読み込み直後に実行される
+// document.addEventListener("DOMContentLoaded", get_diff_arrays );
 
-function get_diff_arrays(){
+const get_diff_arrays = function(){
 
-    var diff_arrays = [];
-    var index_array = [];
+    return new Promise(function(resolve, reject){
 
-    for(var i = 9; i <= 19; i++){
+        var diff_arrays = [];
 
-        var tmp_array = null;
-        var url = "/json/" + i + ".json";
+        for(var i = 9; i <= 19; i++){
 
-        $.getJSON(url, function(data){
-            index_array.push(i);
-            tmp_array = [...Array(data.length)].map((v, i)=> i);
-            console.log(url);
-            // console.log(i);
-            console.log(tmp_array);
-        });
+            var tmp_array = null;
+            var url = "/json/" + i + ".json";
+            $.ajaxSetup({ async: false });
+            $.getJSON(url, function(data){
+                tmp_array = [...Array(data.length)].map((v, i)=> i + 1);
+                // console.log(url);
+                // console.log(tmp_array);
+            });
 
-        diff_arrays.push(tmp_array);
+            diff_arrays.push(tmp_array);
 
-    }
+        }
 
-    /// return [index_array, diff_arrays];
+        // console.log(diff_arrays);
+        resolve(diff_arrays);
+
+    });
 
 }
-
-var alert_text = "";
-var already = [];
 
 
 function search_song_array(){
 
-    _1st().then(_2nd).then(_3rd).then(_ex);
+    // global
+    alert_text = "";
+
+    get_diff_arrays().then(_1st).then(_2nd).then(_3rd).then(_ex);
 
     if(alert_text != ""){
         alert(alert_text);
     }
 
-    index_array = [];
-    diff_arrays = [];
-    already = [];
-
 }
 
 
-const _1st = function(){
+const _1st = function(diff_arrays){
+
+    alert(diff_arrays);
 
     return new Promise(function(resolve, reject){
 
@@ -55,30 +55,27 @@ const _1st = function(){
         if(diff < 9 || diff > 19){
             alert_text += "1曲目 : 9以上19以内で入力してください。\n";
         }else{
+            if(document.getElementById("overlap").checked == true){
+                var song_index = Math.floor(Math.random() * diff_arrays[diff - 9].length);
+            }else{
+                var song_index = Math.floor(Math.random() * diff_arrays[diff - 9].length);
+                diff_arrays[diff - 9].splice(song_index, 1);
+            }
             var url = "/json/" + diff + ".json";
             $.ajaxSetup({ async: false });
             $.getJSON(url, function(data){
-                if(document.getElementById("overlap").checked == true){
-                    var song_index = Math.floor(Math.random() * data.length);
-                }else{
-                    while(true){
-                        var song_index = Math.floor(Math.random() * data.length);
-                        if(overlap_check(diff, song_index, already) == true){
-                            break;
-                        }
-                    }
-                }
-                already.push([diff, song_index]);
                 document.getElementById("pic1").innerText = data[song_index]["曲名"];
             });
         }
         console.log("1st");
-        resolve();
+        console.log(diff_arrays);
+        resolve(diff_arrays);
+        
     });
 }
 
 
-const _2nd = function(){
+const _2nd = function(diff_arrays){
 
     return new Promise(function(resolve, reject){
 
@@ -87,93 +84,89 @@ const _2nd = function(){
         if(diff < 9 || diff > 19){
             alert_text += "2曲目 : 9以上19以内で入力してください。\n";
         }else{
+            if(document.getElementById("overlap").checked == true){
+                var song_index = Math.floor(Math.random() * diff_arrays[diff - 9].length);
+            }else{
+                var song_index = Math.floor(Math.random() * diff_arrays[diff - 9].length);
+                diff_arrays[diff - 9].splice(song_index, 1);
+            }
             var url = "/json/" + diff + ".json";
             $.ajaxSetup({ async: false });
             $.getJSON(url, function(data){
-                if(document.getElementById("overlap").checked == true){
-                    var song_index = Math.floor(Math.random() * data.length);
-                }else{
-                    while(true){
-                        var song_index = Math.floor(Math.random() * data.length);
-                        if(overlap_check(diff, song_index, already) == true){
-                            break;
-                        }
-                    }
-                }
-                already.push([diff, song_index]);
                 document.getElementById("pic2").innerText = data[song_index]["曲名"];
             });
         }
         console.log("2nd");
-        resolve();
+        console.log(diff_arrays);
+        resolve(diff_arrays);
     });
 }
 
 
-const _3rd = function(){
+const _3rd = function(diff_arrays){
 
-    new Promise(function(resolve, reject){
+    return new Promise(function(resolve, reject){
 
     // 3曲目
         var diff = document.getElementById('3rd').value;
         if(diff < 9 || diff > 19){
             alert_text += "3曲目 : 9以上19以内で入力してください。\n";
         }else{
+            if(document.getElementById("overlap").checked == true){
+                var song_index = Math.floor(Math.random() * diff_arrays[diff - 9].length);
+            }else{
+                var song_index = Math.floor(Math.random() * diff_arrays[diff - 9].length);
+                diff_arrays[diff - 9].splice(song_index, 1);
+            }
             var url = "/json/" + diff + ".json";
             $.ajaxSetup({ async: false });
             $.getJSON(url, function(data){
-                if(document.getElementById("overlap").checked == true){
-                    var song_index = Math.floor(Math.random() * data.length);
-                }else{
-                    while(true){
-                        var song_index = Math.floor(Math.random() * data.length);
-                        if(overlap_check(diff, song_index, already) == true){
-                            break;
-                        }
-                    }
-                }
-                already.push([diff, song_index]);
                 document.getElementById("pic3").innerText = data[song_index]["曲名"];
             });
         }
         console.log("3rd");
-        resolve();
+        console.log(diff_arrays);
+        resolve(diff_arrays);
     });
 
 }
 
 
-const _ex = function(){
+const _ex = function(diff_arrays){
 
-    new Promise(function(resolve, reject){
+    alert(diff_arrays);
+
+    return new Promise(function(resolve, reject){
 
         // EXTRA
         var diff = document.getElementById('ex').value;
         if(diff < 9 || diff > 19){
             alert_text += "EXTRA : 9以上19以内で入力してください。";
         }else{
+            if(document.getElementById("overlap").checked == true){
+                var song_index = Math.floor(Math.random() * diff_arrays[diff - 9].length);
+            }else{
+                var song_index = Math.floor(Math.random() * diff_arrays[diff - 9].length);
+                diff_arrays[diff - 9].splice(song_index, 1);
+                alert(song_index);
+            }
             var url = "/json/" + diff + ".json";
             $.ajaxSetup({ async: false });
             $.getJSON(url, function(data){
-                if(document.getElementById("overlap").checked == true){
-                    var song_index = Math.floor(Math.random() * data.length);
-                }else{
-                    while(true){
-                        var song_index = Math.floor(Math.random() * data.length);
-                        if(overlap_check(diff, song_index, already) == true){
-                            break;
-                        }
-                    }
-                }
-                already.push([diff, song_index]);
                 document.getElementById("pic4").innerText = data[song_index]["曲名"];
             });
         }
         console.log("ex");
+        alert(diff_arrays);
+        console.log(diff_arrays);
         resolve();
     });
 }
 
+
+// 激遅レガシー
+
+/*
 
 function overlap_check(diff, index, already){
 
@@ -282,6 +275,8 @@ function search_song(){
 
 
 }
+
+*/
 
 
 // これだとうまくいかない...なぜだ...
